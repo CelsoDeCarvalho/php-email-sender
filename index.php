@@ -22,16 +22,16 @@
                 $receptor = $_POST['receptor'];
                 $assunto = $_POST['assunto'];
                 $conteudo = $_POST['conteudo'];
-                $emissor = "celsomomade361@gmail.com";
+                $emissor = $_POST['emissor'];
 
-                if (empty($receptor) || empty($assunto) || empty($conteudo)) {
+                if (empty($receptor) || empty($assunto) || empty($conteudo)||empty($emissor)) {
                     ?>
                     <div class="alert alert-danger text-center">
                         <h5>Preencha todos os campos</h5>
                     </div>
                     <?php
                 } else {
-                    if (mail($receptor, $assunto, $conteudo, $emissor)) {
+                    if (mail($receptor, $assunto, $conteudo,'From:'.$emissor)) {
                         ?>
                         <div class="alert alert-success text-center">
                             <h5>Voce mandou um email para<?php $receptor ?></h5>
@@ -45,6 +45,11 @@
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email receptor</label>
                     <input type="email" name="receptor" class="form-control" id="exampleInputEmail1"
+                           aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail2" class="form-label">Email emissor</label>
+                    <input type="email" name="emissor" class="form-control" id="exampleInputEmail2"
                            aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
